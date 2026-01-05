@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bright Club Solar Energy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Bright Club Solar Energy – Rooftop solar EPC solutions and WAAREE inverter based systems in Maharashtra."
+  />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --primary: #005f9e;   /* main blue */
+      --accent:  #f7941d;   /* orange */
+      --secondary: #69be28; /* green */
+      --dark: #123044;      /* dark headings */
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px; /* anchor offset for fixed navbar */
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background-color: #f3f6fb;
+      color: #243447;
+    }
+
+    /* NAVBAR -------------------------------------------------- */
+
+    .navbar-brand img {
+      height: 50px;
+    }
+
+    .navbar {
+      background-color: #ffffffd9; /* semi‑transparent white */
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(15, 35, 52, 0.06);
+      box-shadow: 0 10px 30px rgba(15, 35, 52, 0.08);
+    }
+
+    .navbar-light .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280,0,0,0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: #30445c;
+      padding-inline: 0.9rem;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus {
+      color: var(--primary);
+    }
+
+    /* HERO ---------------------------------------------------- */
+
+    header.hero {
+      padding-top: 6.5rem;
+      padding-bottom: 4.5rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: radial-gradient(
+        circle at top left,
+        #fff7ec 0,
+        #e7f3ff 40%,
+        #ffffff 100%
+      );
+      position: relative;
+      overflow: hidden;
+    }
+
+    header.hero::before {
+      content: "";
+      position: absolute;
+      top: -140px;
+      right: -80px;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(
+        circle,
+        rgba(247, 148, 29, 0.35),
+        transparent 65%
+      );
+      opacity: 0.8;
+      animation: floatSun 10s ease-in-out infinite alternate;
+    }
+
+    header.hero::after {
+      content: "";
+      position: absolute;
+      bottom: -160px;
+      left: -120px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(
+        circle,
+        rgba(0, 95, 158, 0.2),
+        transparent 70%
+      );
+      animation: floatGlow 12s ease-in-out infinite alternate;
+    }
+
+    header.hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    header.hero h1 {
+      font-weight: 700;
+      font-size: clamp(2.1rem, 3vw + 1rem, 2.8rem);
+      line-height: 1.2;
+      color: var(--dark);
+    }
+
+    header.hero h5 {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .tagline {
+      color: #526377;
+      font-size: 1.02rem;
+    }
+
+    .hero-image {
+      border-radius: 1.2rem;
+      box-shadow: 0 24px 45px rgba(15, 35, 52, 0.22);
+      width: 100%;
+      object-fit: cover;
+    }
+
+    /* BUTTONS ------------------------------------------------- */
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      border: none;
+      box-shadow: 0 10px 20px rgba(0, 95, 158, 0.35);
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(0.96);
+      box-shadow: 0 14px 26px rgba(0, 95, 158, 0.4);
+    }
+
+    .btn-outline-secondary {
+      border-color: rgba(15, 35, 52, 0.18);
+      color: #30445c;
+      font-weight: 500;
+    }
+
+    .btn-outline-secondary:hover {
+      background-color: #f1f5ff;
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* SECTIONS & HEADINGS ------------------------------------ */
+
+    section {
+      padding: 4.5rem 0;
+    }
+
+    section:nth-of-type(even) {
+      background: #f6f9ff;
+    }
+
+    .section-title {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: var(--primary);
+    }
+
+    .section-heading {
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .icon-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(
+        135deg,
+        rgba(247, 148, 29, 0.18),
+        rgba(105, 190, 40, 0.18)
+      );
+      color: var(--accent);
+      font-size: 1.4rem;
+      margin-right: 0.75rem;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .product-image {
+      object-fit: cover;
+      width: 100%;
+      border-radius: 0.75rem;
+    }
+
+    /* CARDS & HOVERS ----------------------------------------- */
+
+    .project-card img {
+      object-fit: cover;
+      width: 100%;
+      height: 220px;
+      border-radius: 0.75rem 0.75rem 0 0;
+    }
+
+    .project-card .card-body {
+      border-top: 3px solid var(--secondary);
+    }
+
+    .badge-location {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      position: absolute;
+      bottom: 0.75rem;
+      left: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .pricing-card,
+    .project-card,
+    .contact-card {
+      border-radius: 1rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+      background-color: #ffffff;
+      transition: transform 0.25s ease, box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .pricing-card:hover,
+    .project-card:hover,
+    .contact-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 35px rgba(15, 35, 52, 0.18);
+      border-color: rgba(0, 95, 158, 0.18);
+    }
+
+    .pricing-card .price {
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .list-check {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .list-check li::before {
+      content: "✔";
+      color: var(--secondary);
+      margin-right: 0.4rem;
+      font-weight: bold;
+    }
+
+    .list-check li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* REVEAL ANIMATIONS -------------------------------------- */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .reveal.from-left {
+      transform: translateX(-40px);
+    }
+
+    .reveal.from-right {
+      transform: translateX(40px);
+    }
+
+    .reveal.from-bottom {
+      transform: translateY(40px);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    .delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    /* HERO BG ANIMATIONS ------------------------------------- */
+
+    @keyframes floatSun {
+      from {
+        transform: translate(0, 0);
+      }
+      to {
+        transform: translate(-20px, 30px);
+      }
+    }
+
+    @keyframes floatGlow {
+      from {
+        transform: translate(0, 0);
+      }
+      to {
+        transform: translate(25px, -20px);
+      }
+    }
+
+    /* FOOTER -------------------------------------------------- */
+
+    footer {
+      background-color: #071320;
+      color: #e5edf5;
+      padding: 2.5rem 0 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #e5edf5;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body id="top">
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#top">
+        <img src="images/logo-bcse.jpg" alt="Bright Club Solar Energy logo" />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About / आमच्याबद्दल</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects / प्रोजेक्ट</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#products">Products / प्रॉडक्ट</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#pricing">Pricing / पॅकेज</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact / संपर्क</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="row align-items-center gy-4">
+        <div class="col-lg-6 reveal from-left">
+          <p class="section-title mb-2">Bright Club Solar Energy</p>
+          <h1 class="mb-2">
+            Bright Your Future With Clean Solar Power
+          </h1>
+          <h5 class="mb-3">
+            स्वच्छ सौर ऊर्जेसह तुमचे भविष्य उज्ज्वल करा
+          </h5>
+          <p class="tagline mb-2">
+            Design, supply and installation of rooftop solar systems in Maharashtra
+            using high‑efficiency WAAREE inverters and quality components.
+          </p>
+          <p class="tagline mb-4">
+            महाराष्ट्रात घर, दुकान आणि शेतासाठी दर्जेदार रूफटॉप सौर
+            प्रकल्प – Waaree पॅनेल व इन्व्हर्टर, योग्य स्ट्रक्चर, वायरिंग,
+            अर्थिंग आणि नेटकमीटरिंगसह पूर्ण काम.
+          </p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="#contact" class="btn btn-primary btn-lg">
+              Book a Free Site Visit / मोफत साइट व्हिजिट बुक करा
+            </a>
+            <a href="#projects" class="btn btn-outline-secondary btn-lg">
+              View Projects / आमचे प्रोजेक्ट
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-6 reveal from-right delay-1">
+          <img
+            src="images/project-hero.jpg"
+            alt="Rooftop solar panels installed by Bright Club Solar Energy"
+            class="img-fluid hero-image"
+          />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="row gy-4 align-items-center">
+        <div class="col-lg-6 reveal from-left">
+          <h6 class="section-title">About Us / आमच्याबद्दल</h6>
+          <h2 class="section-heading">
+            End‑to‑End Rooftop Solar EPC Contractor<br />
+            संपूर्ण रूफटॉप सौर सेवा – डिझाईन ते कमिशनिंग
+          </h2>
+
+          <p>
+            Bright Club Solar Energy is a solar EPC company based in Solapur,
+            Maharashtra. We specialise in residential, commercial and small
+            industrial rooftop systems using BIS‑approved modules and WAAREE
+            grid‑tied inverters.
+          </p>
+          <p>
+            ब्राईट क्लब सोलर एनर्जी, सोलापूर (महाराष्ट्र) येथील रूफटॉप सौर
+            EPC कंत्राटदार आहे. घर, शेत, दुकान, शाळा, हॉस्पिटल यासाठी आम्ही
+            Waaree चे BIS‑approved पॅनेल आणि इन्व्हर्टर वापरून दर्जेदार
+            सौर प्रकल्प उभारतो.
+          </p>
+
+          <div class="row pt-2">
+            <div class="col-sm-6 mb-3">
+              <div class="d-flex align-items-center">
+                <div class="icon-badge">☀</div>
+                <div>
+                  <h6 class="mb-1">Quality Components / दर्जेदार साहित्य</h6>
+                  <p class="mb-0 small">
+                    Tier‑1 modules, WAAREE inverters, AC/DC protection with DB,
+                    and proper earthing for long system life.<br />
+                    टियर‑१ पॅनेल, Waaree इन्व्हर्टर, AC/DC DB, सर्ज प्रोटेक्शन
+                    आणि योग्य अर्थिंग – त्यामुळे सिस्टीमचे आयुष्य जास्त.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3">
+              <div class="d-flex align-items-center">
+                <div class="icon-badge">⚙</div>
+                <div>
+                  <h6 class="mb-1">
+                    Professional Installation / प्रोफेशनल इन्स्टॉलेशन
+                  </h6>
+                  <p class="mb-0 small">
+                    Neat wiring, structure fabrication, testing & documentation
+                    as per DISCOM and safety standards.<br />
+                    नीट वायरींग, मजबूत स्ट्रक्चर, तपासणी आणि कागदपत्रे –
+                    MSEDCL/महावितरणच्या नियमांप्रमाणे संपूर्ण काम.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inverter / DB image -->
+        <div class="col-lg-6 reveal from-right delay-1">
+          <img
+            src="images/project-inverter-room.jpg"
+            alt="WAAREE inverter and AC/DC distribution boxes installed on site"
+            class="img-fluid product-image"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <h6 class="section-title text-center">Projects / आमचे प्रोजेक्ट</h6>
+      <h2 class="section-heading text-center mb-4">
+        Recent Installations<br />
+        अलीकडील इन्स्टॉलेशन
+      </h2>
+
+      <div class="row g-4">
+        <!-- Project 1 -->
+        <div class="col-md-4 reveal from-bottom">
+          <div class="card project-card h-100 border-0">
+            <div class="position-relative">
+              <img
+                src="images/project-velapur.jpg"
+                alt="Rooftop solar project in Velapur, Maharashtra"
+              />
+              <span class="badge-location">
+                Velapur, Maharashtra / वेळापूर
+              </span>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Residential Rooftop System</h5>
+              <p class="card-text small text-muted mb-1">
+                Grid‑tied rooftop solar plant installed on RCC terrace with
+                south‑facing modules.
+              </p>
+              <p class="card-text small mb-1">
+                आरसीसी छतावर ग्रिड‑टाईड सौर प्रकल्प – जास्तीत जास्त
+                जनरेशनसाठी योग्य टिल्ट व दिशा.
+              </p>
+              <p class="card-text small mb-0">
+                Approx. coordinates: 17.79° N, 75.05° E
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="col-md-4 reveal from-bottom delay-1">
+          <div class="card project-card h-100 border-0">
+            <div class="position-relative">
+              <img
+                src="images/project-malinagar.jpg"
+                alt="Rooftop solar project in Malinagar, Maharashtra"
+              />
+              <span class="badge-location">
+                Malinagar, Maharashtra / माळीनगर
+              </span>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Tin‑Roof Solar Plant</h5>
+              <p class="card-text small text-muted mb-1">
+                Solar PV array mounted on sheet roof with customised structure
+                and WAAREE inverter.
+              </p>
+              <p class="card-text small mb-0">
+                टिन शेडवर खास डिझाईन केलेले स्ट्रक्चर, योग्य वायरींग आणि Waaree
+                इन्व्हर्टरसह पूर्ण प्रकल्प.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="col-md-4 reveal from-bottom delay-2">
+          <div class="card project-card h-100 border-0">
+            <div class="position-relative">
+              <img
+                src="images/project-inverter-closeup.jpg"
+                alt="WAAREE inverter with AC/DC protection boxes"
+              />
+              <span class="badge-location">
+                Solapur District / सोलापूर विभाग
+              </span>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Inverter & Protection Panel</h5>
+              <p class="card-text small text-muted mb-1">
+                WAAREE on‑grid inverter with dedicated AC & DC distribution
+                boxes, energy meter and neatly routed conduits.
+              </p>
+              <p class="card-text small mb-0">
+                Remote monitoring enabled for live performance data.<br />
+                मोबाईल अॅप / वेब पोर्टलवरून लाईव्ह जनरेशन मॉनिटरिंग सुविधा.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="container">
+      <div class="row gy-4 align-items-center">
+        <div class="col-lg-5 reveal from-left">
+          <img
+            src="images/waaree-fseries-g2.jpg"
+            alt="WAAREE Single‑Phase F Series (G2) inverter"
+            class="img-fluid product-image"
+          />
+        </div>
+
+        <div class="col-lg-7 reveal from-right delay-1">
+          <h6 class="section-title">Products / प्रॉडक्ट</h6>
+          <h2 class="section-heading">
+            WAAREE Single‑Phase F Series (G2) Inverters<br />
+            Waaree F सिरीज (G2) सिंगल‑फेज इन्व्हर्टर
+          </h2>
+
+          <p>
+            Bright Club Solar Energy uses WAAREE F Series (G2) dual‑MPPT
+            grid‑tied inverters for high efficiency and reliability in
+            residential and small commercial projects.
+          </p>
+          <p>
+            आमच्या बहुतेक सिस्टीममध्ये Waaree F Series (G2) ड्युअल‑MPPT
+            इन्व्हर्टर वापरले जातात – ज्यामध्ये उच्च कार्यक्षमता, मोठा MPPT
+            व्होल्टेज रेंज आणि रिमोट मॉनिटरिंगची सुविधा आहे.
+          </p>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <ul class="list-check small mb-3">
+                <li>High performance, low start‑up voltage</li>
+                <li>Wide MPPT voltage range (80–550 V)</li>
+                <li>Max. efficiency up to 97.4%</li>
+                <li>Transformerless, natural convection cooling</li>
+              </ul>
+            </div>
+            <div class="col-sm-6">
+              <ul class="list-check small mb-3">
+                <li>IP65 – outdoor installation possible</li>
+                <li>In‑built AC & DC protections</li>
+                <li>Remote monitoring via app / web portal</li>
+                <li>Optional Wi‑Fi / GPRS / 4G communication</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="table-responsive mt-3">
+            <table class="table table-sm table-bordered align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Model</th>
+                  <th>Rated Output (VA)</th>
+                  <th>Max. Input Power (W)</th>
+                  <th>Max. Efficiency (%)</th>
+                </tr>
+              </thead>
+              <tbody class="small">
+                <tr><td>F3000‑G2</td><td>3000</td><td>4500</td><td>97.4</td></tr>
+                <tr><td>F3600‑G2</td><td>3600</td><td>5400</td><td>97.4</td></tr>
+                <tr><td>F4600‑G2</td><td>4600</td><td>6900</td><td>97.4</td></tr>
+                <tr><td>F5000‑G2</td><td>5000</td><td>7500</td><td>97.4</td></tr>
+                <tr><td>F5300‑G2</td><td>5300</td><td>7950</td><td>97.4</td></tr>
+                <tr><td>F6000‑G2</td><td>6000</td><td>9000</td><td>97.4</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="small text-muted mb-0">
+            Data is based on the WAAREE F Series (G2) datasheet. For complete and
+            latest details, please refer to the official WAAREE brochure.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING (3.3 / 4 / 5 kW) -->
+  <section id="pricing">
+    <div class="container">
+      <h6 class="section-title text-center">Pricing / पॅकेज</h6>
+      <h2 class="section-heading text-center mb-4">
+        Waaree Rooftop Solar Packages (With Subsidy)<br />
+        Waaree रूफटॉप सोलर पॅकेज – सबसिडीसह अंदाजे दर
+      </h2>
+
+      <div class="row g-4">
+        <!-- 3.3 kW PACKAGE -->
+        <div class="col-md-4 reveal from-bottom">
+          <div class="pricing-card p-4 h-100">
+            <h3 class="mb-1 text-center">Waaree System 3.3 kW</h3>
+            <p class="text-center text-muted small mb-2">
+              Approx. 3.3 kW DC rooftop system
+            </p>
+
+            <p class="price text-center mb-0">₹ 1,12,000*</p>
+            <p class="text-center text-muted small mb-3">
+              Net Amount (after subsidy) / सबसिडीनंतर देय रक्कम
+            </p>
+
+            <h6 class="mb-1">Includes / यामध्ये साधारण हे समाविष्ट असते:</h6>
+            <ul class="list-check small mb-3">
+              <li>Waaree Mono PERC 535W पॅनेल × 6</li>
+              <li>Waaree 3.3 kW इन्व्हर्टर – 10 वर्ष वॉरंटी</li>
+              <li>स्ट्रक्चर (GI)</li>
+              <li>DC / AC वायरिंग</li>
+              <li>Earthing + Lightning Arrestor</li>
+              <li>DCDB + ACDB + SPD</li>
+              <li>Installation + Net Metering Work</li>
+            </ul>
+
+            <h6 class="mb-1">Generation (3 kW System) / उत्पादन:</h6>
+            <ul class="small mb-3">
+              <li>08–13 युनिट/दिवस</li>
+              <li>300–360 युनिट/महिना</li>
+              <li>सालाना 3,000–3,600 युनिट</li>
+              <li>दरमहा अंदाजे ₹3,000–₹4,000 वीजबिल बचत</li>
+            </ul>
+
+            <table class="table table-sm table-bordered small mb-1">
+              <tbody>
+                <tr>
+                  <th>सिस्टीम किंमत</th>
+                  <td>₹ 1,90,000</td>
+                </tr>
+                <tr>
+                  <th>Subsidy (-)</th>
+                  <td>₹ 78,000</td>
+                </tr>
+                <tr>
+                  <th>Net Amount (Customer Payable)</th>
+                  <td><strong>₹ 1,12,000</strong></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="small text-muted mb-0">
+              *Government policy नुसार सबसिडी व दर बदलू शकतात. Final quotation
+              साइट व्हिजिट व लोड तपासणी नंतर दिली जाईल.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4 kW PACKAGE -->
+        <div class="col-md-4 reveal from-bottom delay-1">
+          <div class="pricing-card p-4 h-100">
+            <h3 class="mb-1 text-center">Waaree System 4 kW</h3>
+            <p class="text-center text-muted small mb-2">
+              Approx. 4 kW DC rooftop system
+            </p>
+
+            <p class="price text-center mb-0">₹ 1,22,000*</p>
+            <p class="text-center text-muted small mb-3">
+              Net Amount (after subsidy) / सबसिडीनंतर देय रक्कम
+            </p>
+
+            <h6 class="mb-1">Includes / यामध्ये साधारण हे समाविष्ट असते:</h6>
+            <ul class="list-check small mb-3">
+              <li>Waaree Mono PERC 535W पॅनेल × 8</li>
+              <li>Waaree 5 kW इन्व्हर्टर – 10 वर्ष वॉरंटी</li>
+              <li>स्ट्रक्चर (GI)</li>
+              <li>DC / AC वायरिंग</li>
+              <li>Earthing + Lightning Arrestor</li>
+              <li>DCDB + ACDB + SPD</li>
+              <li>Installation + Net Metering Work</li>
+            </ul>
+
+            <h6 class="mb-1">Generation (4 kW System) / उत्पादन:</h6>
+            <ul class="small mb-3">
+              <li>14–16 युनिट/दिवस</li>
+              <li>380–480 युनिट/महिना</li>
+              <li>सालाना 4,560–5,760 युनिट</li>
+              <li>दरमहा अंदाजे ₹3,000–₹4,000 वीजबिल बचत</li>
+            </ul>
+
+            <table class="table table-sm table-bordered small mb-1">
+              <tbody>
+                <tr>
+                  <th>सिस्टीम किंमत</th>
+                  <td>₹ 2,00,000</td>
+                </tr>
+                <tr>
+                  <th>Subsidy (-)</th>
+                  <td>₹ 78,000</td>
+                </tr>
+                <tr>
+                  <th>Net Amount (Customer Payable)</th>
+                  <td><strong>₹ 1,22,000</strong></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="small text-muted mb-0">
+              *Government policy नुसार सबसिडी व दर बदलू शकतात. Final quotation
+              साइट व्हिजिट व लोड तपासणी नंतर दिली जाईल.
+            </p>
+          </div>
+        </div>
+
+        <!-- 5 kW PACKAGE -->
+        <div class="col-md-4 reveal from-bottom delay-2">
+          <div class="pricing-card p-4 h-100">
+            <h3 class="mb-1 text-center">Waaree System 5 kW</h3>
+            <p class="text-center text-muted small mb-2">
+              Approx. 5 kW DC rooftop system
+            </p>
+
+            <p class="price text-center mb-0">₹ 1,97,000*</p>
+            <p class="text-center text-muted small mb-3">
+              Net Amount (after subsidy) / सबसिडीनंतर देय रक्कम
+            </p>
+
+            <h6 class="mb-1">Includes / यामध्ये साधारण हे समाविष्ट असते:</h6>
+            <ul class="list-check small mb-3">
+              <li>Waaree Mono PERC 535W पॅनेल × 9 – 25 वर्ष वॉरंटी</li>
+              <li>Waaree 5 kW इन्व्हर्टर – 8 वर्ष वॉरंटी</li>
+              <li>स्ट्रक्चर (GI)</li>
+              <li>DC / AC वायरिंग</li>
+              <li>Earthing + Lightning Arrestor</li>
+              <li>DCDB + ACDB + SPD</li>
+              <li>Installation + Net Metering Work</li>
+            </ul>
+
+            <h6 class="mb-1">Generation (5 kW System) / उत्पादन:</h6>
+            <ul class="small mb-3">
+              <li>16–18 युनिट/दिवस</li>
+              <li>480–540 युनिट/महिना</li>
+              <li>सालाना 5,760–6,480 युनिट</li>
+              <li>दरमहा अंदाजे ₹3,000–₹4,000 वीजबिल बचत</li>
+            </ul>
+
+            <table class="table table-sm table-bordered small mb-1">
+              <tbody>
+                <tr>
+                  <th>सिस्टीम किंमत</th>
+                  <td>₹ 2,75,000</td>
+                </tr>
+                <tr>
+                  <th>Subsidy (-)</th>
+                  <td>₹ 78,000</td>
+                </tr>
+                <tr>
+                  <th>Net Amount (Customer Payable)</th>
+                  <td><strong>₹ 1,97,000</strong></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="small text-muted mb-0">
+              *Government policy नुसार सबसिडी व दर बदलू शकतात. Final quotation
+              साइट व्हिजिट व लोड तपासणी नंतर दिली जाईल.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-6 reveal from-left">
+          <div class="contact-card p-4 h-100">
+            <h6 class="section-title">Contact / संपर्क</h6>
+            <h2 class="section-heading mb-3">
+              Get a Site Visit or Quotation<br />
+              साइट व्हिजिट / कोटेशन साठी संपर्क करा
+            </h2>
+            <p>
+              Share your address, connected load (kW) and recent electricity bill.
+              We will design a suitable solar system and share a detailed proposal.
+            </p>
+            <p>
+              आपला पत्ता, कनेक्टेड लोड (kW) आणि शेवटचे वीजबिल पाठवा.
+              आम्ही योग्य सिस्टीम डिझाईन करून तपशीलवार कोटेशन देऊ.
+            </p>
+
+            <!-- Web3Forms integrated form -->
+            <form id="contactForm" method="POST">
+              <!-- REQUIRED: Web3Forms access key -->
+              <input
+                type="hidden"
+                name="access_key"
+                value="78060f0d-c222-467f-bce6-f1bf52a220cc"
+              />
+              <!-- optional but useful -->
+              <input
+                type="hidden"
+                name="from_name"
+                value="Bright Club Solar Energy Website"
+              />
+              <input
+                type="hidden"
+                name="subject"
+                value="New enquiry from Bright Club Solar Energy website"
+              />
+
+              <div class="mb-3">
+                <label for="name" class="form-label">Name / नाव</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="phone" class="form-label"
+                  >Mobile Number / मोबाईल नंबर</label
+                >
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="phone"
+                  name="phone"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="location" class="form-label"
+                  >Location / Address / पत्ता</label
+                >
+                <textarea
+                  class="form-control"
+                  id="location"
+                  name="location"
+                  rows="2"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label for="message" class="form-label">
+                  Message / Requirement / मेसेज
+                </label>
+                <textarea
+                  class="form-control"
+                  id="message"
+                  name="message"
+                  rows="3"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary">
+                Submit Enquiry / चौकशी पाठवा
+              </button>
+
+              <div id="form-status" class="mt-3 small"></div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-lg-6 reveal from-right delay-1">
+          <div class="ps-lg-4">
+            <h6 class="section-title">Office Details / ऑफिस पत्ता</h6>
+            <h2 class="section-heading mb-3">Bright Club Solar Energy</h2>
+
+            <p class="mb-2">
+              Shop No. 4, CTS No. 889,<br />
+              Akluj Road, Solapur, Maharashtra – 413101, India
+            </p>
+
+            <p class="mb-1"><strong>Phone / मोबाईल:</strong> +91 73856 40214</p>
+            <p class="mb-1">
+              <strong>Email:</strong> brightclubsolarenergy@gmail.com
+            </p>
+
+            <p class="mb-3 small text-muted">
+              You can embed a Google Map iframe here later if required.
+            </p>
+
+            <h6 class="mb-2">Working Area / कामाचे क्षेत्र</h6>
+            <p class="small">
+              Solapur, Malshiras, Akluj, Velapur, Malinagar आणि आसपासची गावे /
+              Taluka level projects across Solapur district and nearby
+              locations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row gy-3 align-items-center">
+        <div class="col-md-6">
+          <p class="mb-1">
+            &copy; <span id="year"></span> Bright Club Solar Energy. All rights
+            reserved.
+          </p>
+          <p class="mb-0 small">
+            Rooftop solar EPC contractor – design, supply, installation &amp;
+            service.
+          </p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="#top">Back to top / वर जा</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // IntersectionObserver for reveal animations (re-animates each time)
+    document.addEventListener("DOMContentLoaded", function () {
+      const reveals = document.querySelectorAll(".reveal");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            } else {
+              entry.target.classList.remove("active");
+            }
+          });
+        },
+        {
+          threshold: 0.25, // about 1/4 visible
+        }
+      );
+
+      reveals.forEach((el) => observer.observe(el));
+    });
+
+    // Web3Forms AJAX submit so we stay on same page
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("contactForm");
+      const status = document.getElementById("form-status");
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        status.textContent = "Sending...";
+        status.classList.remove("text-success", "text-danger");
+
+        const formData = new FormData(form);
+
+        try {
+          const res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData,
+          });
+
+          const data = await res.json();
+
+          if (data.success) {
+            status.textContent =
+              "Thank you! Your enquiry has been sent. / धन्यवाद, आपली चौकशी पाठवली गेली आहे.";
+            status.classList.add("text-success");
+            form.reset();
+          } else {
+            throw new Error(data.message || "Form submission failed");
+          }
+        } catch (err) {
+          status.textContent =
+            "Error sending form. Please try again or contact on WhatsApp / Mobile.";
+          status.classList.add("text-danger");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
