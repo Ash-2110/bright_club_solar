@@ -399,10 +399,21 @@
       box-shadow: 0 18px 35px rgba(15, 35, 52, 0.18);
     }
 
+    /* fade effect */
+    #customerSitesCarousel.carousel-fade .carousel-item {
+      transition: opacity 0.8s ease-in-out;
+    }
+
     .customer-site-img {
       width: 100%;
       height: clamp(260px, 50vh, 420px);
       object-fit: cover;
+      transition: transform 5s ease;
+    }
+
+    /* slow zoom on active slide */
+    #customerSitesCarousel .carousel-item.active .customer-site-img {
+      transform: scale(1.05);
     }
 
     .carousel-control-prev,
@@ -416,6 +427,18 @@
       border-radius: 50%;
       border: 1px solid rgba(0, 0, 0, 0.15);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .customer-slide-caption {
+      position: absolute;
+      left: 1rem;
+      bottom: 1.1rem;
+      padding: 0.35rem 0.8rem;
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      letter-spacing: 0.02em;
     }
 
     /* REVEAL ANIMATIONS -------------------------------------- */
@@ -766,88 +789,143 @@
 
       <div
         id="customerSitesCarousel"
-        class="carousel slide"
+        class="carousel slide carousel-fade"
         data-bs-ride="carousel"
         data-bs-interval="3500"
         data-bs-touch="true"
       >
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img
-              src="images/customer-site-1.jpg"
-              class="d-block w-100 customer-site-img"
-              alt="Customer rooftop solar site 1"
-            />
+            <div class="position-relative">
+              <img
+                src="images/customer-site-1.jpg"
+                class="d-block w-100 customer-site-img"
+                alt="Customer rooftop solar site 1"
+              />
+              <span class="customer-slide-caption">
+                Customer Site – Rooftop Solar Installation
+              </span>
+            </div>
           </div>
           <div class="carousel-item">
-            <img
-              src="images/customer-site-2.jpg"
-              class="d-block w-100 customer-site-img"
-              alt="Customer rooftop solar site 2"
-            />
+            <div class="position-relative">
+              <img
+                src="images/customer-site-2.jpg"
+                class="d-block w-100 customer-site-img"
+                alt="Customer rooftop solar site 2"
+              />
+              <span class="customer-slide-caption">
+                Customer Site – Rooftop Solar Installation
+              </span>
+            </div>
           </div>
           <div class="carousel-item">
-            <img
-              src="images/customer-site-3.jpg"
-              class="d-block w-100 customer-site-img"
-              alt="Customer rooftop solar site 3"
-            />
+            <div class="position-relative">
+              <img
+                src="images/customer-site-3.jpg"
+                class="d-block w-100 customer-site-img"
+                alt="Customer rooftop solar site 3"
+              />
+              <span class="customer-slide-caption">
+                Customer Site – Rooftop Solar Installation
+              </span>
+            </div>
           </div>
           <div class="carousel-item">
-            <img
-              src="images/customer-site-4.jpg"
-              class="d-block w-100 customer-site-img"
-              alt="Customer rooftop solar site 4"
-            />
+            <div class="position-relative">
+              <img
+                src="images/customer-site-4.jpg"
+                class="d-block w-100 customer-site-img"
+                alt="Customer rooftop solar site 4"
+              />
+              <span class="customer-slide-caption">
+                Customer Site – Rooftop Solar Installation
+              </span>
+            </div>
           </div>
           <div class="carousel-item">
-            <img
-              src="images/customer-site-5.jpg"
-              class="d-block w-100 customer-site-img"
-              alt="Customer rooftop solar site 5"
-            />
+            <div class="position-relative">
+              <img
+                src="images/customer-site-5.jpg"
+                class="d-block w-100 customer-site-img"
+                alt="Customer rooftop solar site 5"
+              />
+              <span class="customer-slide-caption">
+                Customer Site – Rooftop Solar Installation
+              </span>
+            </div>
           </div>
           <div class="carousel-item">
-            <img
-              src="images/customer-site-6.jpg"
-              class="d-block w-100 customer-site-img"
-              alt="Customer rooftop solar site 6"
-            />
+            <div class="position-relative">
+              <img
+                src="images/customer-site-6.jpg"
+                class="d-block w-100 customer-site-img"
+                alt="Customer rooftop solar site 6"
+              />
+              <span class="customer-slide-caption">
+                Customer Site – Rooftop Solar Installation
+              </span>
+            </div>
           </div>
           <div class="carousel-item">
-            <img
-              src="images/customer-site-7.jpg"
-              class="d-block w-100 customer-site-img"
-              alt="Customer rooftop solar site 7"
-            />
+            <div class="position-relative">
+              <img
+                src="images/customer-site-7.jpg"
+                class="d-block w-100 customer-site-img"
+                alt="Customer rooftop solar site 7"
+              />
+              <span class="customer-slide-caption">
+                Customer Site – Rooftop Solar Installation
+              </span>
+            </div>
           </div>
           <div class="carousel-item">
-            <img
-              src="images/customer-site-8.jpg"
-              class="d-block w-100 customer-site-img"
-              alt="Customer rooftop solar site 8"
-            />
+            <div class="position-relative">
+              <img
+                src="images/customer-site-8.jpg"
+                class="d-block w-100 customer-site-img"
+                alt="Customer rooftop solar site 8"
+              />
+              <span class="customer-slide-caption">
+                Customer Site – Rooftop Solar Installation
+              </span>
+            </div>
           </div>
           <div class="carousel-item">
-            <img
-              src="images/customer-site-9.jpg"
-              class="d-block w-100 customer-site-img"
-              alt="Customer rooftop solar site 9"
-            />
+            <div class="position-relative">
+              <img
+                src="images/customer-site-9.jpg"
+                class="d-block w-100 customer-site-img"
+                alt="Customer rooftop solar site 9"
+              />
+              <span class="customer-slide-caption">
+                Customer Site – Rooftop Solar Installation
+              </span>
+            </div>
           </div>
           <div class="carousel-item">
-            <img
-              src="images/customer-site-10.jpg"
-              class="d-block w-100 customer-site-img"
-              alt="Customer rooftop solar site 10"
-            />
+            <div class="position-relative">
+              <img
+                src="images/customer-site-10.jpg"
+                class="d-block w-100 customer-site-img"
+                alt="Customer rooftop solar site 10"
+              />
+              <span class="customer-slide-caption">
+                Customer Site – Rooftop Solar Installation
+              </span>
+            </div>
           </div>
           <div class="carousel-item">
-            <img
-              src="images/customer-site-11.jpg"
-              class="d-block w-100 customer-site-img"
-              alt="Customer rooftop solar site 11"
-            />
+            <div class="position-relative">
+              <img
+                src="images/customer-site-11.jpg"
+                class="d-block w-100 customer-site-img"
+                alt="Customer rooftop solar site 11"
+              />
+              <span class="customer-slide-caption">
+                Customer Site – Rooftop Solar Installation
+              </span>
+            </div>
           </div>
         </div>
 
@@ -1407,25 +1485,53 @@
             <h6 class="section-title">Office Details / ऑफिस पत्ता</h6>
             <h2 class="section-heading mb-3">Bright Club Solar Energy</h2>
 
-            <p class="mb-2">
-              Shop No. 4, CTS No. 889,<br />
-              Akluj Road, Solapur, Maharashtra – 413101, India
-            </p>
+            <!-- Head Office -->
+            <div class="mb-3">
+              <h6 class="mb-1">Head Office / मुख्य कार्यालय (Akluj Road)</h6>
+              <p class="mb-1">
+                Shop No. 4, CTS No. 889,<br />
+                Akluj Road, Solapur, Maharashtra – 413101, India
+              </p>
+            </div>
+
+            <!-- Branch / Warehouse -->
+            <div class="mb-3">
+              <h6 class="mb-1">Branch / Warehouse / गोदाम</h6>
+              <p class="mb-1">
+                Bright Club Solar Energy – Warehouse / Godown,<br />
+                Solapur, Maharashtra, India
+              </p>
+              <p class="mb-1 small">
+                <a
+                  href="https://www.google.com/maps/place/Bright+club+solar+energy/@17.7197722,75.1833254,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc417c4385ae303:0xb3f38e6bd718d888!8m2!3d17.7197722!4d75.1833254!16s%2Fg%2F11xn62pd88!17m2!4m1!1e3!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoKLDEwMDc5MjA2N0gBUAM%3D"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  View branch location on Google Maps / नकाशावर लोकेशन पहा
+                </a>
+              </p>
+
+              <!-- Embedded Google Map (branch location) -->
+              <div class="ratio ratio-16x9 mt-2 rounded shadow-sm">
+                <iframe
+                  src="https://www.google.com/maps?q=17.7197722,75.1833254&z=17&output=embed"
+                  style="border:0;"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
 
             <p class="mb-1"><strong>Phone / मोबाईल:</strong> +91 73856 40214</p>
             <p class="mb-1">
               <strong>Email:</strong> brightclubsolarenergy@gmail.com
             </p>
 
-            <p class="mb-3 small text-muted">
-              You can embed a Google Map iframe here later if required.
-            </p>
-
-            <h6 class="mb-2">Working Area / कामाचे क्षेत्र</h6>
+            <h6 class="mb-2 mt-3">Working Area / कामाचे क्षेत्र</h6>
             <p class="small">
               Solapur, Malshiras, Akluj, Velapur, Malinagar आणि आसपासची गावे /
-              Taluka level projects across Solapur district and nearby
-              locations.
+              Taluka level projects across Solapur district and nearby locations.
             </p>
           </div>
         </div>
