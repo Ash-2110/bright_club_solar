@@ -36,18 +36,18 @@
 <body>
   <div class="container py-5">
     <div class="row justify-content-center">
-      <div class="col-lg-7">
+      <div class="col-lg-8">
         <div class="card p-4">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h3 class="mb-0">Admin – Customer Sites</h3>
+            <h3 class="mb-0">Admin Panel – Bright Club Solar Energy</h3>
             <span class="badge bg-secondary badge-env">Internal Use Only</span>
           </div>
 
           <!-- Simple passcode gate -->
           <div id="login-section">
             <p class="small text-muted mb-2">
-              Enter admin passcode to manage customer sites (only for owner /
-              Bright Club team).
+              Enter admin passcode to manage Projects &amp; Customer Sites
+              (only for owner / Bright Club team).
             </p>
             <div class="mb-3">
               <label class="form-label">Admin Passcode</label>
@@ -67,87 +67,154 @@
           <!-- Main admin panel -->
           <div id="admin-panel" class="d-none">
             <hr class="my-4" />
-            <h5 class="mb-2">Add New Customer Site / नवीन साइट भरा</h5>
-            <form id="site-form" class="mb-4">
+
+            <!-- PROJECTS SECTION -->
+            <h5 class="mb-2">Projects / आमचे प्रोजेक्ट</h5>
+            <p class="small text-muted mb-2">
+              येथे फोटोसोबत पूर्ण माहिती (Title, Location, Description) भरून
+              प्रोजेक्ट add करा. हे डेटा "Projects" सेक्शनसाठी वापरू शकतो.
+            </p>
+
+            <form id="project-form" class="mb-4">
               <div class="mb-3">
-                <label class="form-label">Title / साइटचे नाव</label>
+                <label class="form-label">Title / प्रोजेक्टचे नाव</label>
                 <input
                   type="text"
-                  id="title"
+                  id="p_title"
                   class="form-control"
                   placeholder="e.g. Velapur 5kW Rooftop"
                   required
                 />
               </div>
-
               <div class="mb-3">
                 <label class="form-label">Location / ठिकाण</label>
                 <input
                   type="text"
-                  id="location"
+                  id="p_location"
                   class="form-control"
                   placeholder="e.g. Velapur, Maharashtra"
                   required
                 />
               </div>
-
               <div class="mb-3">
-                <label class="form-label">
-                  Image URL (optional) / इमेज लिंक
-                </label>
+                <label class="form-label">Image URL / फोटो लिंक</label>
                 <input
                   type="url"
-                  id="image_url"
+                  id="p_image_url"
                   class="form-control"
-                  placeholder="https://your-site.com/images/customer-site-12.jpg"
+                  placeholder="https://your-site.com/images/project-xyz.jpg"
+                  required
                 />
                 <div class="form-text small">
-                  सध्या या फील्डमध्ये इमेजची लिंक द्या (जेथे फोटो online host
-                  केलेला असेल). नंतर direct फाइल upload सिस्टीम वेगळ्या स्टेपमध्ये
-                  करता येईल.
+                  सध्या image कुठे online host करून (Google Drive, Cloudinary,
+                  etc.) त्याची public link येथे पेस्ट करा.
                 </div>
               </div>
+              <div class="mb-3">
+                <label class="form-label">Description / माहिती</label>
+                <textarea
+                  id="p_description"
+                  class="form-control"
+                  rows="3"
+                  placeholder="System size, inverter brand, special notes..."
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-success w-100 mb-2">
+                Save Project / प्रोजेक्ट सेव्ह करा
+              </button>
+              <div id="project-form-status" class="small"></div>
+            </form>
 
+            <h6 class="mb-2">Existing Projects</h6>
+            <div class="table-responsive mb-4">
+              <table
+                class="table table-sm table-striped align-middle mb-0"
+              >
+                <thead class="table-light">
+                  <tr>
+                    <th style="width: 8%">ID</th>
+                    <th style="width: 32%">Title</th>
+                    <th style="width: 32%">Location</th>
+                    <th style="width: 28%"></th>
+                  </tr>
+                </thead>
+                <tbody id="projects-table-body"></tbody>
+              </table>
+            </div>
+            <div id="projects-list-status" class="small mb-4 text-muted"></div>
+
+            <hr class="my-4" />
+
+            <!-- CUSTOMER SITES SECTION -->
+            <h5 class="mb-2">Customer Sites / ग्राहक साईट्स</h5>
+            <p class="small text-muted mb-2">
+              फक्त image (किंवा अगदी थोडी माहिती) असलेली ग्राहक साइट्स येथे add
+              करा. हे data "Customer Sites" slider साठी वापरू शकतो.
+            </p>
+
+            <form id="site-form" class="mb-4">
+              <div class="mb-3">
+                <label class="form-label">Image URL / फोटो लिंक</label>
+                <input
+                  type="url"
+                  id="s_image_url"
+                  class="form-control"
+                  placeholder="https://your-site.com/images/customer-site-12.jpg"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Title (optional) / नाव</label>
+                <input
+                  type="text"
+                  id="s_title"
+                  class="form-control"
+                  placeholder="e.g. Customer rooftop"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Location (optional) / ठिकाण</label>
+                <input
+                  type="text"
+                  id="s_location"
+                  class="form-control"
+                  placeholder="e.g. Solapur"
+                />
+              </div>
               <div class="mb-3">
                 <label class="form-label">
                   Description (optional) / थोडक्यात माहिती
                 </label>
                 <textarea
-                  id="description"
+                  id="s_description"
                   class="form-control"
-                  rows="3"
-                  placeholder="System size, inverter brand, special points..."
+                  rows="2"
+                  placeholder="Short note if needed..."
                 ></textarea>
               </div>
-
-              <button type="submit" class="btn btn-success w-100">
+              <button type="submit" class="btn btn-success w-100 mb-2">
                 Save Customer Site / साइट सेव्ह करा
               </button>
-
-              <div id="form-status" class="small mt-2"></div>
+              <div id="site-form-status" class="small"></div>
             </form>
 
-            <h5 class="mb-2">Existing Customer Sites / आधीच्या साइट्स</h5>
-            <p class="small text-muted mb-2">
-              येथील यादी backend DB मधून येते. Delete केल्यास permanently काढली
-              जाईल.
-            </p>
+            <h6 class="mb-2">Existing Customer Sites</h6>
             <div class="table-responsive">
-              <table class="table table-sm table-striped align-middle mb-0">
+              <table
+                class="table table-sm table-striped align-middle mb-0"
+              >
                 <thead class="table-light">
                   <tr>
-                    <th style="width: 10%">ID</th>
-                    <th style="width: 35%">Title</th>
-                    <th style="width: 35%">Location</th>
-                    <th style="width: 20%"></th>
+                    <th style="width: 8%">ID</th>
+                    <th style="width: 32%">Title</th>
+                    <th style="width: 32%">Location</th>
+                    <th style="width: 28%"></th>
                   </tr>
                 </thead>
-                <tbody id="sites-table-body">
-                  <!-- rows added by JS -->
-                </tbody>
+                <tbody id="sites-table-body"></tbody>
               </table>
             </div>
-            <div id="list-status" class="small mt-2 text-muted"></div>
+            <div id="sites-list-status" class="small mt-2 text-muted"></div>
           </div>
         </div>
       </div>
@@ -163,9 +230,16 @@
     const loginSection = document.getElementById("login-section");
     const adminPanel = document.getElementById("admin-panel");
     const loginStatus = document.getElementById("login-status");
-    const formStatus = document.getElementById("form-status");
-    const listStatus = document.getElementById("list-status");
-    const tableBody = document.getElementById("sites-table-body");
+
+    const projectForm = document.getElementById("project-form");
+    const projectFormStatus = document.getElementById("project-form-status");
+    const projectsTableBody = document.getElementById("projects-table-body");
+    const projectsListStatus = document.getElementById("projects-list-status");
+
+    const siteForm = document.getElementById("site-form");
+    const siteFormStatus = document.getElementById("site-form-status");
+    const sitesTableBody = document.getElementById("sites-table-body");
+    const sitesListStatus = document.getElementById("sites-list-status");
 
     // Simple login
     document
@@ -176,108 +250,186 @@
           loginSection.classList.add("d-none");
           adminPanel.classList.remove("d-none");
           loginStatus.textContent = "";
+          loadProjects();
           loadSites();
         } else {
           loginStatus.textContent = "Wrong passcode. / पासकोड चुकीचा आहे.";
         }
       });
 
-    // Load sites list
+    /* ================= PROJECTS FUNCTIONS ================= */
+
+    async function loadProjects() {
+      projectsTableBody.innerHTML = "";
+      projectsListStatus.textContent = "Loading projects...";
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/projects`);
+        const projects = await res.json();
+
+        if (!Array.isArray(projects) || projects.length === 0) {
+          projectsListStatus.textContent =
+            "No projects yet / अजून प्रोजेक्ट add केलेले नाहीत.";
+          return;
+        }
+
+        projects.forEach((p) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${p.id}</td>
+            <td>${p.title || ""}</td>
+            <td>${p.location || ""}</td>
+            <td class="text-end">
+              <button class="btn btn-sm btn-outline-danger" data-pid="${p.id}">
+                Delete
+              </button>
+            </td>
+          `;
+          projectsTableBody.appendChild(tr);
+        });
+
+        projectsListStatus.textContent = `${projects.length} project(s) loaded.`;
+      } catch (err) {
+        console.error(err);
+        projectsListStatus.textContent =
+          "Error loading projects from backend. / प्रोजेक्ट लोड करताना त्रुटी.";
+      }
+    }
+
+    projectForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      projectFormStatus.textContent = "Saving...";
+      projectFormStatus.className = "small";
+
+      const payload = {
+        title: document.getElementById("p_title").value.trim(),
+        location: document.getElementById("p_location").value.trim(),
+        image_url: document.getElementById("p_image_url").value.trim(),
+        description: document.getElementById("p_description").value.trim(),
+      };
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/projects`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Unknown error");
+
+        projectFormStatus.textContent =
+          "Project saved successfully. / प्रोजेक्ट सेव्ह झाला.";
+        projectFormStatus.className = "small text-success";
+        projectForm.reset();
+        loadProjects();
+      } catch (err) {
+        console.error(err);
+        projectFormStatus.textContent =
+          "Error while saving project. / प्रोजेक्ट सेव्ह करताना त्रुटी.";
+        projectFormStatus.className = "small text-danger";
+      }
+    });
+
+    projectsTableBody.addEventListener("click", async function (e) {
+      if (e.target.matches("button[data-pid]")) {
+        const id = e.target.getAttribute("data-pid");
+        if (!confirm(`Delete project ID ${id}?`)) return;
+        try {
+          const res = await fetch(`${API_BASE_URL}/api/projects/${id}`, {
+            method: "DELETE",
+          });
+          if (!res.ok && res.status !== 204) throw new Error("Delete failed");
+          loadProjects();
+        } catch (err) {
+          console.error(err);
+          alert("Error deleting project. / प्रोजेक्ट delete करताना त्रुटी.");
+        }
+      }
+    });
+
+    /* ================= CUSTOMER SITES FUNCTIONS ================= */
+
     async function loadSites() {
-      tableBody.innerHTML = "";
-      listStatus.textContent = "Loading sites...";
+      sitesTableBody.innerHTML = "";
+      sitesListStatus.textContent = "Loading customer sites...";
       try {
         const res = await fetch(`${API_BASE_URL}/api/customer-sites`);
         const sites = await res.json();
 
         if (!Array.isArray(sites) || sites.length === 0) {
-          listStatus.textContent =
-            "No customer sites yet / अजून कोणतीही साइट नाही.";
+          sitesListStatus.textContent =
+            "No customer sites yet / अजून कोणतीही ग्राहक साइट नाही.";
           return;
         }
 
-        sites.forEach((site) => {
+        sites.forEach((s) => {
           const tr = document.createElement("tr");
           tr.innerHTML = `
-            <td>${site.id}</td>
-            <td>${site.title || ""}</td>
-            <td>${site.location || ""}</td>
+            <td>${s.id}</td>
+            <td>${s.title || ""}</td>
+            <td>${s.location || ""}</td>
             <td class="text-end">
-              <button class="btn btn-sm btn-outline-danger" data-id="${site.id}">
+              <button class="btn btn-sm btn-outline-danger" data-sid="${s.id}">
                 Delete
               </button>
             </td>
           `;
-          tableBody.appendChild(tr);
+          sitesTableBody.appendChild(tr);
         });
 
-        listStatus.textContent = `${sites.length} site(s) loaded.`;
+        sitesListStatus.textContent = `${sites.length} site(s) loaded.`;
       } catch (err) {
         console.error(err);
-        listStatus.textContent =
-          "Error loading sites from backend. / साइट लोड करताना त्रुटी.";
+        sitesListStatus.textContent =
+          "Error loading customer sites from backend. / साइट लोड करताना त्रुटी.";
       }
     }
 
-    // Handle new site form submit
-    document
-      .getElementById("site-form")
-      .addEventListener("submit", async function (e) {
-        e.preventDefault();
-        formStatus.textContent = "Saving...";
-        formStatus.className = "small";
+    siteForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      siteFormStatus.textContent = "Saving...";
+      siteFormStatus.className = "small";
 
-        const payload = {
-          title: document.getElementById("title").value.trim(),
-          location: document.getElementById("location").value.trim(),
-          image_url: document.getElementById("image_url").value.trim(),
-          description: document.getElementById("description").value.trim(),
-        };
+      const payload = {
+        image_url: document.getElementById("s_image_url").value.trim(),
+        title: document.getElementById("s_title").value.trim(),
+        location: document.getElementById("s_location").value.trim(),
+        description: document.getElementById("s_description").value.trim(),
+      };
 
-        try {
-          const res = await fetch(`${API_BASE_URL}/api/customer-sites`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
-          });
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/customer-sites`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
 
-          const data = await res.json();
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Unknown error");
 
-          if (!res.ok) {
-            throw new Error(data.error || "Unknown error");
-          }
+        siteFormStatus.textContent =
+          "Customer site saved successfully. / साइट सेव्ह झाली.";
+        siteFormStatus.className = "small text-success";
+        siteForm.reset();
+        loadSites();
+      } catch (err) {
+        console.error(err);
+        siteFormStatus.textContent =
+          "Error while saving customer site. / साइट सेव्ह करताना त्रुटी.";
+        siteFormStatus.className = "small text-danger";
+      }
+    });
 
-          formStatus.textContent =
-            "Customer site saved successfully. / साइट सेव्ह झाली.";
-          formStatus.className = "small text-success";
-          this.reset();
-          loadSites();
-        } catch (err) {
-          console.error(err);
-          formStatus.textContent =
-            "Error while saving site. / साइट सेव्ह करताना त्रुटी.";
-          formStatus.className = "small text-danger";
-        }
-      });
-
-    // Handle delete button clicks (event delegation)
-    tableBody.addEventListener("click", async function (e) {
-      if (e.target.matches("button[data-id]")) {
-        const id = e.target.getAttribute("data-id");
-        if (!confirm(`Delete site ID ${id}?`)) return;
-
+    sitesTableBody.addEventListener("click", async function (e) {
+      if (e.target.matches("button[data-sid]")) {
+        const id = e.target.getAttribute("data-sid");
+        if (!confirm(`Delete customer site ID ${id}?`)) return;
         try {
           const res = await fetch(
             `${API_BASE_URL}/api/customer-sites/${id}`,
             { method: "DELETE" }
           );
-
-          if (!res.ok && res.status !== 204) {
-            throw new Error("Delete failed");
-          }
-
+          if (!res.ok && res.status !== 204) throw new Error("Delete failed");
           loadSites();
         } catch (err) {
           console.error(err);
