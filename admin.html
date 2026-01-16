@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin – Bright Club Solar Energy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background-color: #f3f6fb;
+    }
+    .card {
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .badge-env {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .table-sm td,
+    .table-sm th {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="card p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="mb-0">Admin – Customer Sites</h3>
+            <span class="badge bg-secondary badge-env">Internal Use Only</span>
+          </div>
+
+          <!-- Simple passcode gate -->
+          <div id="login-section">
+            <p class="small text-muted mb-2">
+              Enter admin passcode to manage customer sites (only for owner /
+              Bright Club team).
+            </p>
+            <div class="mb-3">
+              <label class="form-label">Admin Passcode</label>
+              <input
+                type="password"
+                id="admin-pass"
+                class="form-control"
+                placeholder="Enter passcode"
+              />
+            </div>
+            <button id="btn-login" class="btn btn-primary w-100">
+              Unlock Admin Panel
+            </button>
+            <div id="login-status" class="small mt-2 text-danger"></div>
+          </div>
+
+          <!-- Main admin panel -->
+          <div id="admin-panel" class="d-none">
+            <hr class="my-4" />
+            <h5 class="mb-2">Add New Customer Site / नवीन साइट भरा</h5>
+            <form id="site-form" class="mb-4">
+              <div class="mb-3">
+                <label class="form-label">Title / साइटचे नाव</label>
+                <input
+                  type="text"
+                  id="title"
+                  class="form-control"
+                  placeholder="e.g. Velapur 5kW Rooftop"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Location / ठिकाण</label>
+                <input
+                  type="text"
+                  id="location"
+                  class="form-control"
+                  placeholder="e.g. Velapur, Maharashtra"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">
+                  Image URL (optional) / इमेज लिंक
+                </label>
+                <input
+                  type="url"
+                  id="image_url"
+                  class="form-control"
+                  placeholder="https://your-site.com/images/customer-site-12.jpg"
+                />
+                <div class="form-text small">
+                  सध्या या फील्डमध्ये इमेजची लिंक द्या (जेथे फोटो online host
+                  केलेला असेल). नंतर direct फाइल upload सिस्टीम वेगळ्या स्टेपमध्ये
+                  करता येईल.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">
+                  Description (optional) / थोडक्यात माहिती
+                </label>
+                <textarea
+                  id="description"
+                  class="form-control"
+                  rows="3"
+                  placeholder="System size, inverter brand, special points..."
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-success w-100">
+                Save Customer Site / साइट सेव्ह करा
+              </button>
+
+              <div id="form-status" class="small mt-2"></div>
+            </form>
+
+            <h5 class="mb-2">Existing Customer Sites / आधीच्या साइट्स</h5>
+            <p class="small text-muted mb-2">
+              येथील यादी backend DB मधून येते. Delete केल्यास permanently काढली
+              जाईल.
+            </p>
+            <div class="table-responsive">
+              <table class="table table-sm table-striped align-middle mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th style="width: 10%">ID</th>
+                    <th style="width: 35%">Title</th>
+                    <th style="width: 35%">Location</th>
+                    <th style="width: 20%"></th>
+                  </tr>
+                </thead>
+                <tbody id="sites-table-body">
+                  <!-- rows added by JS -->
+                </tbody>
+              </table>
+            </div>
+            <div id="list-status" class="small mt-2 text-muted"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== CONFIGURE THIS PART =====
+    const API_BASE_URL = "https://bright-club-solar-backend.onrender.com";
+    const ADMIN_PASS = "brightadmin123"; // Change to any password you like
+    // ===============================
+
+    const loginSection = document.getElementById("login-section");
+    const adminPanel = document.getElementById("admin-panel");
+    const loginStatus = document.getElementById("login-status");
+    const formStatus = document.getElementById("form-status");
+    const listStatus = document.getElementById("list-status");
+    const tableBody = document.getElementById("sites-table-body");
+
+    // Simple login
+    document
+      .getElementById("btn-login")
+      .addEventListener("click", function () {
+        const pass = document.getElementById("admin-pass").value.trim();
+        if (pass === ADMIN_PASS) {
+          loginSection.classList.add("d-none");
+          adminPanel.classList.remove("d-none");
+          loginStatus.textContent = "";
+          loadSites();
+        } else {
+          loginStatus.textContent = "Wrong passcode. / पासकोड चुकीचा आहे.";
+        }
+      });
+
+    // Load sites list
+    async function loadSites() {
+      tableBody.innerHTML = "";
+      listStatus.textContent = "Loading sites...";
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/customer-sites`);
+        const sites = await res.json();
+
+        if (!Array.isArray(sites) || sites.length === 0) {
+          listStatus.textContent =
+            "No customer sites yet / अजून कोणतीही साइट नाही.";
+          return;
+        }
+
+        sites.forEach((site) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${site.id}</td>
+            <td>${site.title || ""}</td>
+            <td>${site.location || ""}</td>
+            <td class="text-end">
+              <button class="btn btn-sm btn-outline-danger" data-id="${site.id}">
+                Delete
+              </button>
+            </td>
+          `;
+          tableBody.appendChild(tr);
+        });
+
+        listStatus.textContent = `${sites.length} site(s) loaded.`;
+      } catch (err) {
+        console.error(err);
+        listStatus.textContent =
+          "Error loading sites from backend. / साइट लोड करताना त्रुटी.";
+      }
+    }
+
+    // Handle new site form submit
+    document
+      .getElementById("site-form")
+      .addEventListener("submit", async function (e) {
+        e.preventDefault();
+        formStatus.textContent = "Saving...";
+        formStatus.className = "small";
+
+        const payload = {
+          title: document.getElementById("title").value.trim(),
+          location: document.getElementById("location").value.trim(),
+          image_url: document.getElementById("image_url").value.trim(),
+          description: document.getElementById("description").value.trim(),
+        };
+
+        try {
+          const res = await fetch(`${API_BASE_URL}/api/customer-sites`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          });
+
+          const data = await res.json();
+
+          if (!res.ok) {
+            throw new Error(data.error || "Unknown error");
+          }
+
+          formStatus.textContent =
+            "Customer site saved successfully. / साइट सेव्ह झाली.";
+          formStatus.className = "small text-success";
+          this.reset();
+          loadSites();
+        } catch (err) {
+          console.error(err);
+          formStatus.textContent =
+            "Error while saving site. / साइट सेव्ह करताना त्रुटी.";
+          formStatus.className = "small text-danger";
+        }
+      });
+
+    // Handle delete button clicks (event delegation)
+    tableBody.addEventListener("click", async function (e) {
+      if (e.target.matches("button[data-id]")) {
+        const id = e.target.getAttribute("data-id");
+        if (!confirm(`Delete site ID ${id}?`)) return;
+
+        try {
+          const res = await fetch(
+            `${API_BASE_URL}/api/customer-sites/${id}`,
+            { method: "DELETE" }
+          );
+
+          if (!res.ok && res.status !== 204) {
+            throw new Error("Delete failed");
+          }
+
+          loadSites();
+        } catch (err) {
+          console.error(err);
+          alert("Error deleting site. / साइट delete करताना त्रुटी.");
+        }
+      }
+    });
+  </script>
+</body>
+</html>
